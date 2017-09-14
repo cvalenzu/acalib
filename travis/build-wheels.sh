@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSIONS=(2.7)
+VERSIONS=(2.7 3.4 3.5 3.6)
 DIST=`uname`
 if [ "$DIST" = "Linux" ];then
 	PLATAFORM=manylinux1_x86_64

@@ -53,9 +53,7 @@ class TestAnalysis(unittest.TestCase):
 
 
     def test_morph(self):
-        random = np.random.RandomState(0)
-        data = random.rand(10)
-
+        data = np.array([ 0.5488135 ,  0.71518937,  0.60276338,  0.54488318,  0.4236548 ,0.64589411,  0.43758721,  0.891773  ,  0.96366276,  0.38344152])
         
         acum = np.cumsum(data)
         diff = acaana.differenceImpl(acum)

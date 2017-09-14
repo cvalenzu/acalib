@@ -2,21 +2,19 @@ languague: python
 notifications:
   email: false
 
-matrix:
-  include:
-    - sudo: required
-      services:
-        - docker
-      env:
-        - DOCKER_IMAGE=csrg/generic_builder
-        - PATH=/opt/conda/bin:$PATH
+python:
+	- "2.7"
+	- "3.4"
+	- "3.5"
+	- "3.6"
+
+os:
+	- linux
+	- osx
 
 install:
-  - sudo docker pull $DOCKER_IMAGE
+	- pip install requirements.txt
+	- pip install .
 
 script:
-  - sudo docker run -e PATH=$PATH --rm -v `pwd`:/workspace $DOCKER_IMAGE /workspace/travis/build-wheels.sh
-
-after_success:
-  - pip install twine
-  - (twine upload dist/* -u $USER -p $PASSWORD --skip-existing  || echo "Not last release")
+	- python test/run_tests.py
